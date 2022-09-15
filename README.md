@@ -2,6 +2,10 @@
 
 A quick prototype for Ashley
 
+## how to install the project 
+
+`npm install`
+
 ## how to build the project
 
 `npm run build`
