@@ -1,5 +1,6 @@
 import { Help } from './lib/help';
 import { Options } from './lib/options';
+import { Parser } from './parser';
 
 /**
  * The spira class
@@ -12,7 +13,7 @@ export class Spira {
   /**
    * The directories
    */
-  public directories: string[] = [];
+  private directories: string[] = [];
 
   /**
    * The constructor
@@ -41,7 +42,7 @@ export class Spira {
    * @description Runs the script
    */
   public runScript(): void {
-    // console.log('script is running');
-    // console.log('\n\nAdd appears to be working');
+    const parse = new Parser(this.directories);
+    parse.parseDirectories();
   }
 }

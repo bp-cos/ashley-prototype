@@ -3,6 +3,8 @@ import rewiremock from 'rewiremock';
 let callHelp = false;
 let displayHelpCalled = false;
 let directories = [];
+let parseDirectories = [];
+const parseDirectoriesCalled = [];
 
 rewiremock('./lib/help').by(() => {
   return {
@@ -28,6 +30,20 @@ rewiremock('./lib/options').by(() => {
   };
 });
 
+rewiremock('./parser').by(() => {
+  return {
+    Parser: class ParserMockClass {
+      constructor(directories) {
+        parseDirectories = directories;
+      }
+
+      parseDirectories() {
+        parseDirectoriesCalled.push(true);
+      }
+    }
+  };
+});
+
 rewiremock.enable();
 import { Spira } from '../../../app/index';
 rewiremock.disable();
@@ -37,6 +53,7 @@ describe('Spira', () => {
     displayHelpCalled = false;
     callHelp = false;
     directories.length = 0;
+    parseDirectories.length = 0;
   });
 
   describe('DisplayHelp', () => {
@@ -59,7 +76,8 @@ describe('Spira', () => {
       const spira = new Spira();
       spira.runScript();
 
-      expect(spira.directories).toEqual(['first']);
+      expect(parseDirectories).toEqual(['first']);
+      expect(parseDirectoriesCalled).toEqual([true]);
       expect(process.exit).not.toHaveBeenCalled();
     });
   });
