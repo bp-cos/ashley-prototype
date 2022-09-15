@@ -26,7 +26,7 @@ describe('Command', () => {
         '::new-line::::new-line::Prototype help.',
         '::new-line::::new-line::Usage:',
         '::new-line::::tab::--h|-h|h|help|--help|? ::tab:: Displays this help message',
-        `::new-line::::tab::--directories <'["first", "second"]'> ::tab:: The list of directories to parse.`,
+        `::new-line::::tab::--directories|-d <'["dir1", "dir2", "dirn"]'> ::tab:: The list of directories to parse.`,
         '::new-line::::new-line::'
       ]);
     });

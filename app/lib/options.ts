@@ -54,7 +54,18 @@ export class Options {
    * @returns a collection of strings a directories
    */
   getDirectories(): string[] {
-    return JSON.parse(this.getDashArgument('directories') as string) as string[];
+    try {
+      let directories = this.getDashArgument('directories') as string;
+      if (!directories) {
+        directories = this.getDashArgument('d') as string;
+      }
+
+      return JSON.parse(directories) as string[];
+    } catch (_) {
+      throw new Error(
+        `The input directories format is invalid. Please try: <--directories|-d> '["dir1", "dir2", "dirn"]'`
+      );
+    }
   }
 
   /**
