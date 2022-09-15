@@ -8,7 +8,8 @@ describe('Command', () => {
     existingConsoleLog = console.log;
 
     console.log = (log: string) => {
-      consoleLogs.push(log.replace(/\n/g, '::new-line::'));
+      log = log.replace(/\n/g, '::new-line::');
+      consoleLogs.push(log.replace(/\t/g, '::tab::'));
     };
   });
 
@@ -21,7 +22,13 @@ describe('Command', () => {
       const help = new Help();
       help.displayHelp();
 
-      expect(consoleLogs).toEqual(['::new-line::::new-line::This is the prototype help.::new-line::::new-line::']);
+      expect(consoleLogs).toEqual([
+        '::new-line::::new-line::Prototype help.',
+        '::new-line::::new-line::Usage:',
+        '::new-line::::tab::--h|-h|h|help|--help|? ::tab:: Displays this help message',
+        `::new-line::::tab::--directories <'["first", "second"]'> ::tab:: The list of directories to parse.`,
+        '::new-line::::new-line::'
+      ]);
     });
   });
 });

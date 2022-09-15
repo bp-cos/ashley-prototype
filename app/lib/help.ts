@@ -8,7 +8,12 @@ export class Help {
    * @description displays the help
    */
   displayHelp(): void {
-    /* tslint:disable-next-line */
-    console.log('\n\nThis is the prototype help.\n\n');
+    /* tslint:disable */
+    console.log('\n\nPrototype help.');
+    console.log('\n\nUsage:');
+    console.log('\n\t--h|-h|h|help|--help|? \t Displays this help message');
+    console.log('\n\t--directories <\'["first", "second"]\'> \t The list of directories to parse.');
+    console.log('\n\n');
+    /* tslint:enable */
   }
 }

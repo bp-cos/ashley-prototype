@@ -110,3 +110,4 @@ tsc-output.cpuprofile
 build
 coverage-unit
 tsc-out
+documentation
