@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "types": ["node"],
+    "removeComments": true,
+    "diagnostics": true,
+    "extendedDiagnostics": true
+  },
+  "include": [
+    "./app/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Ashley Prototype",
+  "entryPoints": ["app"],
+  "tsconfig": "tsconfig.app.json",
+  "entryPointStrategy": "expand",
+  "out": "documentation",
+  "excludePrivate": false,
+  "excludeProtected": false,
+  "exclude": ["./node_modules/**"],
+  "includeVersion": true,
+  "readme": "./README.md",
+  "sort": ["static-first", "visibility", "alphabetical", "enum-value-ascending"],
+  "cleanOutputDir": true,
+  "treatWarningsAsErrors": false,
+  "theme": "hierarchy",
+  "internalNamespace": "Exported"
+}

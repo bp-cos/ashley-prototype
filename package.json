@@ -1,0 +1,82 @@
+{
+  "name": "ashley-prototype",
+  "version": "0.0.1",
+  "modify-date": "2022-09-15",
+  "description": "The Ashley Prototype",
+  "repository": "https://github.com/bp-cos/ashley-prototype.git",
+  "watch": {
+    "test": {
+      "patterns": [
+        "app",
+        "test/unit"
+      ],
+      "extensions": "ts,golden.json,js",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 2500,
+      "runOnChangeOnly": false
+    },
+    "lint": {
+      "patterns": [
+        "app"
+      ],
+      "extensions": "ts",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 500,
+      "runOnChangeOnly": false
+    }
+  },
+  "scripts": {
+    "build:app": "tsc -p tsconfig.app.json --generateCpuProfile tsc-output.cpuprofile",
+    "build:test:coverage": "run-s build:app build:test",
+    "build:test": "tsc -p tsconfig.spec.json",
+    "build": "run-s build:clean build:app",
+    "build:app:clean": "rm -rf build/*",
+    "build:test:clean": "rm -rf tsc-out/*",
+    "build:clean": "run-s build:app:clean build:test:clean",
+    "coverage:clean": "rm -rf coverage-*",
+    "coverage": "run-s coverage:clean build:test test:run coverage:unit",
+    "coverage:unit": "nyc --nycrc-path \".nycrc.unit.json\" check-coverage",
+    "docs:clean": "rm -rf documentation",
+    "docs:run": "./node_modules/.bin/typedoc",
+    "docs": "run-s docs:clean docs:run",
+    "format:all": "prettier --config ./.prettierrc --write \"{app,test}/**/*.{ts,js}\"",
+    "format:check": "prettier --config ./.prettierrc --list-different \"{app,test}/**/*.{ts,js}\"",
+    "format:fix": "pretty-quick --staged",
+    "lint:all": "tslint -p tsconfig.spec.json",
+    "lint": "tslint -p tsconfig.app.json",
+    "test:run": "nyc --nycrc-path \".nycrc.unit.json\" node ./tsc-out/test/unit/specs.js",
+    "test": "run-s build:test test:run",
+    "test:single:run": "node ./tsc-out/test/unit/specs.js",
+    "test:single": "run-s build:test test:single:run",
+    "watch:lint": "npm-watch lint",
+    "watch:unit": "npm-watch test",
+    "prepare": "husky install"
+  },
+  "private": true,
+  "dependencies": {
+    "rxjs": "^7.5.5",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.10.3",
+    "@types/node": "^17.0.21",
+    "husky": "^7.0.0",
+    "jasmine": "^4.0.2",
+    "jasmine-console-reporter": "^3.1.0",
+    "jasmine-core": "^4.0.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "jasmine-supertest": "^1.0.0",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.11.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "rewiremock": "^3.14.3",
+    "tslint": "^6.1.3",
+    "typedoc": "^0.22.13",
+    "typedoc-plugin-missing-exports": "^0.22.6",
+    "typedoc-theme-hierarchy": "^1.0.14"
+  }
+}

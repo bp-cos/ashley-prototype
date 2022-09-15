@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+storage/*
+.nyc_output
+tsc-output.cpuprofile
+.DS_Store

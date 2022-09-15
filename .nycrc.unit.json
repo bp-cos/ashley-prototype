@@ -1,0 +1,24 @@
+{
+  "all": true,
+  "include": [
+    "tsc-out/app/**/*.js"
+  ],
+  "exclude": [
+    "tsc-out/app/**/model/**"
+  ],
+  "reporter": "lcov",
+  "report-dir": "coverage-unit",
+  "branches": 100,
+  "lines": 100,
+  "functions": 100,
+  "source-map": true,
+  "produce-source-map": true,
+  "statements": 100,
+  "check-coverage": "false",
+  "watermarks": {
+    "statements": [90, 100],
+   "functions": [90, 100],
+   "branches": [90, 100],
+    "lines": [90, 100]
+  }
+}

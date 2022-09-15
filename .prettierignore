@@ -1,0 +1,15 @@
+documentation
+.nyc_output
+coverage-*
+dist
+*.txt
+*.json
+*.md
+test.js
+*.html
+build/*
+.husky
+.prettierrc
+.prettierignore
+.gitignore
+.npmignore

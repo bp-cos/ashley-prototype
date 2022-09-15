@@ -1,0 +1,47 @@
+{
+  "extends": "tslint:recommended",
+  "linterOptions": {
+    "exclude": [ ]
+  },
+  "rules": {
+    "arrow-return-shorthand": true,
+    "curly": true,
+    "deprecation": {
+      "severity": "warn"
+    },
+    "eofline": true,
+    "import-blacklist": [true, "rxjs/Rx"],
+    "import-spacing": true,
+    "indent": [true, "spaces"],
+    "interface-over-type-literal": true,
+    "max-line-length": [true, 140],
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+      }
+    ],
+    "no-console": [true, "log", "debug", "warn", "info", "time", "timeEnd", "trace"],
+    "no-inferrable-types": [true, "ignore-params"],
+    "no-non-null-assertion": true,
+    "no-redundant-jsdoc": true,
+    "no-switch-case-fall-through": true,
+    "object-literal-sort-keys": false,
+    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always"],
+    "triple-equals": [true, "allow-null-check"],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"]
+  }
+}
