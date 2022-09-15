@@ -1,3 +1,6 @@
+import { parse } from 'node-html-parser';
+import { readdir, readFileSync } from 'fs';
+
 /**
  * The Parser class
  */
@@ -5,7 +8,7 @@ export class Parser {
   /**
    * The constructor
    */
-  constructor(public directories: string[]) {}
+  constructor(private directories: string[]) {}
 
   /**
    * parseDirectories
@@ -13,7 +16,21 @@ export class Parser {
    * @description Runs the script and parses the directories
    */
   public parseDirectories(): void {
-    // console.log('script is running');
-    // console.log('\n\nAdd appears to be working');
+    this.directories.forEach((directory: string) => {
+      readdir(directory, (error, files) => {
+        if (error) {
+          throw error;
+        } else {
+          files.forEach((file: string) => {
+            if (file.match(/\.hbs$/)) {
+              const root = parse(readFileSync(file).toString());
+              /* tslint:disable-next-line */
+              console.log(root);
+              /** TODO */
+            }
+          });
+        }
+      });
+    });
   }
 }
