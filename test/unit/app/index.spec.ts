@@ -30,7 +30,7 @@ rewiremock('./lib/options').by(() => {
   };
 });
 
-rewiremock('./parser').by(() => {
+rewiremock('./parser/parser').by(() => {
   return {
     Parser: class ParserMockClass {
       constructor(directories) {

@@ -26,7 +26,7 @@ rewiremock('fs').by(() => {
 });
 
 rewiremock.enable();
-import { Parser } from '../../../../app/parser';
+import { Parser } from '../../../../app/parser/parser';
 rewiremock.disable();
 
 describe('Parser', () => {

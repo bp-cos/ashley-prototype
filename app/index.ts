@@ -1,6 +1,6 @@
 import { Help } from './lib/help';
 import { Options } from './lib/options';
-import { Parser } from './parser';
+import { Parser } from './parser/parser';
 
 /**
  * The spira class
