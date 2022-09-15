@@ -16,6 +16,7 @@ class main {
    */
   private runScript(): void {
     console.log('script is running');
+    console.log('\n\nAdd appears to be working');
   }
 }
 

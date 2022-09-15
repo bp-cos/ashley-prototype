@@ -107,3 +107,4 @@ storage/*
 .nyc_output
 tsc-output.cpuprofile
 .DS_Store
+build
