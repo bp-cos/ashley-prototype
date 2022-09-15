@@ -6,9 +6,14 @@ A quick prototype for Ashley
 
 `npm run build`
 
+## Help after build
+
+`node build/run.js ?`
+
 ## how to run the project after build 
 
-`node build/main.js`
+`node build/run.js --directories|-d '["dir1", "dir2", "dirn"]'`
+
 
 ## Testing
 

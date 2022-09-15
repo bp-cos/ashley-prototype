@@ -4,7 +4,8 @@
     "tsc-out/app/**/*.js"
   ],
   "exclude": [
-    "tsc-out/app/**/model/**"
+    "tsc-out/app/**/model/**",
+    "tsc-out/app/run.js"
   ],
   "reporter": "lcov",
   "report-dir": "coverage-unit",

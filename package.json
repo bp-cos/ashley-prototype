@@ -4,6 +4,7 @@
   "modify-date": "2022-09-15",
   "description": "The Ashley Prototype",
   "repository": "https://github.com/bp-cos/ashley-prototype.git",
+  "main": "build/index.js",
   "watch": {
     "test": {
       "patterns": [

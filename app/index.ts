@@ -1,9 +1,10 @@
 import { Help } from './lib/help';
 import { Options } from './lib/options';
+
 /**
- * The main class
+ * The spira class
  */
-class Main {
+export class Spira {
   /**
    * The options
    */
@@ -44,6 +45,3 @@ class Main {
     // console.log('\n\nAdd appears to be working');
   }
 }
-
-const main = new Main();
-main.runScript();
