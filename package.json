@@ -18,7 +18,8 @@
     },
     "lint": {
       "patterns": [
-        "app"
+        "app",
+        "test/unit"
       ],
       "extensions": "ts",
       "quiet": true,
@@ -46,9 +47,9 @@
     "format:fix": "pretty-quick --staged",
     "lint:all": "tslint -p tsconfig.spec.json",
     "lint": "tslint -p tsconfig.app.json",
-    "test:run": "nyc --nycrc-path \".nycrc.unit.json\" node ./tsc-out/test/unit/specs.js",
+    "test:run": "nyc --nycrc-path \".nycrc.unit.json\" node ./test/unit/specs.js",
     "test": "run-s build:test test:run",
-    "test:single:run": "node ./tsc-out/test/unit/specs.js",
+    "test:single:run": "node ./test/unit/specs.js",
     "test:single": "run-s build:test test:single:run",
     "watch:lint": "npm-watch lint",
     "watch:unit": "npm-watch test",
@@ -56,6 +57,7 @@
   },
   "private": true,
   "dependencies": {
+    "minimist": "^1.2.6",
     "rxjs": "^7.5.5",
     "typescript": "^4.6.2"
   },

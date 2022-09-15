@@ -108,3 +108,5 @@ storage/*
 tsc-output.cpuprofile
 .DS_Store
 build
+coverage-unit
+tsc-out
