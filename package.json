@@ -58,6 +58,7 @@
   },
   "private": true,
   "dependencies": {
+    "cli-color": "^2.0.3",
     "minimist": "^1.2.6",
     "node-html-parser": "^6.0.0",
     "rxjs": "^7.5.5",

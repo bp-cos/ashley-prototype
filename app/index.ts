@@ -1,4 +1,5 @@
 import { Help } from './lib/help';
+import { Logger } from './lib/logger';
 import { Options } from './lib/options';
 import { Parser } from './parser/parser';
 
@@ -6,6 +7,10 @@ import { Parser } from './parser/parser';
  * The spira class
  */
 export class Spira {
+  /**
+   * The logger
+   */
+  private logger = new Logger();
   /**
    * The options
    */
@@ -23,7 +28,11 @@ export class Spira {
       new Help().displayHelp();
       process.exit(1);
     } else {
-      this.determineDirectories();
+      try {
+        this.determineDirectories();
+      } catch (error) {
+        this.logger.error(`\n\nThere is an error: ${error.message}\n\n`);
+      }
     }
   }
 

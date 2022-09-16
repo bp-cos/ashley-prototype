@@ -4,7 +4,13 @@ let callHelp = false;
 let displayHelpCalled = false;
 let directories = [];
 let parseDirectories = [];
+let originalLog;
+const log = [];
 const parseDirectoriesCalled = [];
+
+rewiremock('./color').by(() => {
+  return require('../mocks/color-mock');
+});
 
 rewiremock('./lib/help').by(() => {
   return {
@@ -24,7 +30,11 @@ rewiremock('./lib/options').by(() => {
       }
 
       getDirectories() {
-        return directories;
+        if (directories.length) {
+          return directories;
+        } else {
+          throw new Error('This is a directory error');
+        }
       }
     }
   };
@@ -54,6 +64,19 @@ describe('Spira', () => {
     callHelp = false;
     directories.length = 0;
     parseDirectories.length = 0;
+
+    /* tslint:disable */
+    originalLog = console.log;
+    console.log = (input) => {
+      log.push(input);
+    };
+    /* tslint:enable */
+  });
+
+  afterEach(() => {
+    /* tslint:disable */
+    console.log = originalLog;
+    /* tslint:enable */
   });
 
   describe('DisplayHelp', () => {
@@ -79,6 +102,16 @@ describe('Spira', () => {
       expect(parseDirectories).toEqual(['first']);
       expect(parseDirectoriesCalled).toEqual([true]);
       expect(process.exit).not.toHaveBeenCalled();
+    });
+
+    describe('Errors', () => {
+      it('should handle an error getting the directrories', () => {
+        const spira = new Spira();
+
+        spira.runScript();
+
+        expect(log).toEqual(['red(There is an error: This is a directory error)']);
+      });
     });
   });
 });
