@@ -44,7 +44,7 @@ describe('Parser', () => {
       parser.parseDirectories();
 
       expect(directoriesRead).toEqual(['first']);
-      expect(filesRead).toEqual(['good-data.hbs']);
+      expect(filesRead).toEqual(['first/good-data.hbs']);
     });
   });
 

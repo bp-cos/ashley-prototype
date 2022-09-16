@@ -1,5 +1,6 @@
 import { parse } from 'node-html-parser';
 import { readdir, readFileSync } from 'fs';
+import { join } from 'path';
 
 /**
  * The Parser class
@@ -23,7 +24,7 @@ export class Parser {
         } else {
           files.forEach((file: string) => {
             if (file.match(/\.hbs$/)) {
-              const root = parse(readFileSync(file).toString());
+              const root = parse(readFileSync(join(directory, file)).toString());
               /* tslint:disable-next-line */
               console.log(root);
               /** TODO */
